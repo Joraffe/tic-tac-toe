@@ -10,4 +10,5 @@ The game begins with Player "X"
 You enter moves by first specifying a row and then specifying a column.
 
 Work in progress:
-- Need to add cases when there are no available spaces (i.e. a draw occurrs)
+- Need to add cases when there are no available spaces (i.e. a draw occurs)
+- Need to add unit testing suite
