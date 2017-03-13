@@ -27,3 +27,68 @@ function printBoard(arr) {
   }
   return str;
 }
+
+function winner(arr) {
+  var rowWinner = arr.reduce(function(player, row) {
+    if (player.length === 1) {
+      return player;
+    } else {
+      var combinedRow = row.reduce(function(combRow, spot) {
+        combRow += spot;
+        return combRow;
+      }, '');
+      // console.log('combinedRow', combinedRow)
+
+      if (combinedRow === 'XXX') {
+        return 'X';
+      } else if (combinedRow === 'OOO') {
+        return 'O';
+      } else {
+        return '';
+      }
+    }
+  }, '');
+
+  if (rowWinner !== '') {
+    return rowWinner;
+  }
+
+  var colWinner = '';
+  for (var i = 0; i < arr.length; i++) {
+    var combCol = '';
+    arr.forEach(function(row) {
+      combCol += row[i];
+    });
+    if (combCol === 'XXX') {
+      colWinner = 'X';
+    } else if (combCol === 'OOO') {
+      colWinner = 'O';
+    }
+  }
+
+  if (colWinner !== '') {
+    return colWinner;
+  }
+
+  var diagWinner = '';
+  var downRightDiag = arr[0][0] + arr[1, 1] + arr[2, 2];
+  if (downRightDiag === 'XXX') {
+    diagWinner = 'X';
+  } else if (downRightDiag === 'OOO') {
+    diagWinner = 'O';
+  }
+
+  var downLeftDiag = arr[0, 2] + arr[1, 1] + arr[2, 0];
+  if (downLeftDiag === 'XXX') {
+    diagWinner = 'X';
+  } else if (downLeftDiag === 'OOO') {
+    diagWinner = 'O';
+  }
+
+  if (diagWinner !== '') {
+    return diagWinner;
+  }
+
+  return 'Currently no winner!';
+
+}
