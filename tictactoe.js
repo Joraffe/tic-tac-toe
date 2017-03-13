@@ -92,3 +92,17 @@ function winner(arr) {
   return 'Currently no winner!';
 
 }
+
+function togglePiece(board, player, row, col) {
+  var spot = board[row][col];
+  if (!spot) {
+    board[row][col] = player;
+  }
+}
+
+module.exports = {
+  parseBoard: parseBoard,
+  printBoard: printBoard,
+  winner: winner,
+  togglePiece: togglePiece
+};
